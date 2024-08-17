@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/expense.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddNewExpense});
+  final void Function(Expense expense) onAddNewExpense;
 
   @override
   State<NewExpense> createState() {
@@ -52,6 +53,11 @@ class _NewExpenseState extends State<NewExpense> {
       );
       return;
     }
+
+  //   all data is valid
+    final expense = Expense(title: _titleController.text.trim(), amount: enteredAmount,
+        date:_expenseDate!, category: _intialDropdownValue);
+    widget.onAddNewExpense(expense);
   }
 
   @override
