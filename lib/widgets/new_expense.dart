@@ -58,6 +58,8 @@ class _NewExpenseState extends State<NewExpense> {
     final expense = Expense(title: _titleController.text.trim(), amount: enteredAmount,
         date:_expenseDate!, category: _intialDropdownValue);
     widget.onAddNewExpense(expense);
+
+    Navigator.pop(context);
   }
 
   @override
